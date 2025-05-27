@@ -1,0 +1,59 @@
+# 🤖 EasyRSVP AI Team - Agents Dockerfile
+# ========================================
+
+FROM python:3.11-slim
+
+LABEL maintainer="EasyRSVP Team <team@easyrsvp.com>"
+LABEL description="CrewAI Agents for EasyRSVP AI Team"
+LABEL version="1.0.0"
+
+# Set working directory
+WORKDIR /app
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/app \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    curl \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements first (for better caching)
+COPY requirements.txt .
+
+# Install Python dependencies
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
+
+# Create necessary directories
+RUN mkdir -p /app/{agents,scripts,logs,data}
+
+# Copy application code
+COPY agents/ /app/agents/
+COPY scripts/ /app/scripts/
+COPY *.py /app/
+
+# Create non-root user for security
+RUN groupadd -r easyrsvp && \
+    useradd -r -g easyrsvp -d /app -s /bin/bash easyrsvp && \
+    chown -R easyrsvp:easyrsvp /app
+
+# Switch to non-root user
+USER easyrsvp
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8000/health || exit 1
+
+# Expose port
+EXPOSE 8000
+
+# Command to run the application
+CMD ["uvicorn", "agents.api:app", "--host", "0.0.0.0", "--port", "8000", "--reload"] 

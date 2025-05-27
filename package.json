@@ -1,0 +1,92 @@
+{
+  "name": "easyrsvp-ai-team",
+  "version": "1.0.0",
+  "description": "🤖 Système d'équipe IA automatisée pour le développement EasyRSVP avec n8n et CrewAI",
+  "main": "agents/crew_ai_agents.py",
+  "scripts": {
+    "start": "docker-compose up -d",
+    "stop": "docker-compose down",
+    "restart": "docker-compose restart",
+    "setup": "npm run install-deps && npm run setup-n8n && npm run import-workflows",
+    "install-deps": "pip install -r requirements.txt",
+    "setup-n8n": "docker-compose up -d n8n postgres redis",
+    "import-workflows": "node scripts/import-workflows.js",
+    "dashboard": "python scripts/dashboard.py",
+    "logs": "docker-compose logs -f",
+    "logs-n8n": "docker-compose logs -f n8n",
+    "logs-agents": "tail -f logs/agents.log",
+    "test": "python -m pytest tests/ -v",
+    "test-agents": "python -m pytest tests/test_agents.py -v",
+    "test-workflows": "python -m pytest tests/test_workflows.py -v",
+    "lint": "flake8 agents/ tests/ scripts/",
+    "format": "black agents/ tests/ scripts/",
+    "health-check": "python scripts/health-check.py",
+    "backup": "python scripts/backup.py",
+    "restore": "python scripts/restore.py",
+    "deploy": "python scripts/deploy.py",
+    "dev": "docker-compose -f docker-compose.dev.yml up",
+    "prod": "docker-compose -f docker-compose.prod.yml up -d",
+    "monitor": "python scripts/monitor.py",
+    "alerts": "python scripts/alerts.py",
+    "metrics": "python scripts/metrics.py",
+    "debug": "python -m pdb agents/crew_ai_agents.py"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "node-cron": "^3.0.3",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.4",
+    "nodemon": "^3.0.2",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
+  },
+  "python_dependencies": {
+    "crewai": "^0.22.5",
+    "langchain": "^0.1.0",
+    "openai": "^1.6.1",
+    "python-dotenv": "^1.0.0",
+    "requests": "^2.31.0",
+    "pytest": "^7.4.3",
+    "black": "^23.12.0",
+    "flake8": "^6.1.0",
+    "fastapi": "^0.104.1",
+    "uvicorn": "^0.24.0",
+    "pydantic": "^2.5.2",
+    "sqlalchemy": "^2.0.23",
+    "psycopg2-binary": "^2.9.9",
+    "redis": "^5.0.1",
+    "celery": "^5.3.4",
+    "prometheus-client": "^0.19.0",
+    "slack-sdk": "^3.26.1",
+    "jinja2": "^3.1.2"
+  },
+  "keywords": [
+    "ai",
+    "automation",
+    "crewai",
+    "n8n",
+    "easyrsvp",
+    "development",
+    "agents",
+    "workflow"
+  ],
+  "author": "EasyRSVP Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/easyrsvp/ai-team"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "python": ">=3.9.0"
+  },
+  "config": {
+    "n8n_version": "1.20.0",
+    "postgres_version": "15",
+    "redis_version": "7"
+  }
+} 

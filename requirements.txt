@@ -1,0 +1,115 @@
+# 🤖 EasyRSVP AI Team - Python Dependencies
+# ==========================================
+
+# Core AI and Automation
+crewai==0.11.2
+langchain==0.1.20
+langchain-openai==0.0.5
+langchain-anthropic==0.1.1
+openai==1.3.7
+
+# Web Framework and API
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+httpx==0.25.2
+
+# Database and Storage
+sqlalchemy==2.0.23
+asyncpg==0.29.0
+redis==5.0.1
+alembic==1.12.1
+
+# Task Queue and Background Jobs
+celery[redis]==5.3.4
+kombu==5.3.4
+
+# Environment and Configuration
+python-dotenv==1.0.0
+pydantic-settings==2.1.0
+dynaconf==3.2.4
+
+# Monitoring and Observability
+prometheus-client==0.19.0
+structlog==23.2.0
+sentry-sdk[fastapi]==1.38.0
+
+# Communication and Notifications
+slack-sdk==3.26.1
+discord.py==2.3.2
+sendgrid==6.11.0
+
+# Template Engine
+jinja2==3.1.2
+markupsafe==2.1.3
+
+# Testing Framework
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+pytest-mock==3.12.0
+httpx-test==0.22.0
+
+# Code Quality and Formatting
+black==23.11.0
+flake8==6.1.0
+isort==5.12.0
+mypy==1.7.1
+pre-commit==3.6.0
+
+# Security and Validation
+cryptography==41.0.7
+hvac==2.0.0
+docker==6.1.3
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# Data Processing and Analysis
+pandas==2.1.3
+numpy==1.25.2
+matplotlib==3.8.2
+seaborn==0.13.0
+
+# Date and Time Utilities
+python-dateutil==2.8.2
+pytz==2023.3
+arrow==1.3.0
+
+# Async and Concurrency
+asyncio==3.4.3
+aiofiles==23.2.1
+aioredis==2.0.1
+
+# Development and Debugging
+ipython==8.18.1
+jupyter==1.0.0
+rich==13.7.0
+typer[all]==0.9.0
+
+# File Processing
+python-multipart==0.0.6
+openpyxl==3.1.2
+PyPDF2==3.0.1
+
+# Network and HTTP
+urllib3==2.1.0
+certifi==2023.11.17
+
+# System and OS Utilities
+psutil==5.9.6
+click==8.1.7
+pathlib2==2.3.7
+
+# Version Pinning for Compatibility
+setuptools>=65.0.0
+wheel>=0.38.0
+pip>=23.0.0
+
+# Task Master integration (if using file-based approach)
+watchdog==3.0.0
+
+# Email validation
+email-validator==2.1.0
+
+# Production server
+gunicorn==21.2.0 

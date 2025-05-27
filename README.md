@@ -1,8 +1,8 @@
-# 🤖 Équipe IA - Workflow n8n pour EasyRSVP
+# 🤖 Équipe IA - Workflow n8n 
 
 ## Vue d'ensemble
 
-Système d'automatisation avancé utilisant n8n et CrewAI pour orchestrer une équipe complète d'agents IA spécialisés dans le développement de l'application EasyRSVP.
+Système d'automatisation avancé utilisant n8n et CrewAI pour orchestrer une équipe complète d'agents IA spécialisés dans le développement d'application .
 
 ## 🏗️ Architecture
 
